@@ -1,5 +1,10 @@
+/* eslint-disable */
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Categoria} from './category/entity/category.entity';
+import { CategoriaModule } from './category/module/category.module';
+import { ProdutoModule } from './product/module/product.module';
+import { Produto } from './product/entity/product.entity';
 
 @Module({
   imports: [
@@ -10,11 +15,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'root',
       password: '513610',
       database: 'db_void_games',
-      entities: [],
+      entities: [Categoria, Produto],
       synchronize: true,
     }),
+    CategoriaModule,
+    ProdutoModule,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}
